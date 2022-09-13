@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9065475f170540a9bf8a12aed961733f, type: 3}
+  m_Name: Lich
+  m_EditorClassIdentifier: 
+  monsterTypeId: 0
+  hp: 8
+  damage: 5
+  moveSpeed: 4
+  effectiveDistance: 0.5
+  cleavage: 0.5
+  minLoot: 1
+  maxLoot: 7
+  prefab: {fileID: 6461205935528241240, guid: 069a719a4fbedf24e9db76ec3a16926e, type: 3}

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 namespace CodeBase.StaticData
 {
@@ -30,6 +31,6 @@ namespace CodeBase.StaticData
         public int maxLoot;
         
         [Space]
-        public GameObject prefab;
+        public AssetReferenceGameObject prefabReference;
     }
 }

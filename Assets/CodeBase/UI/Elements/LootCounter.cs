@@ -15,11 +15,10 @@ namespace CodeBase.UI.Elements
         {
             _worldData = worldData;
             _worldData.lootData.Changed += UpdateCounter;
+            
+            UpdateCounter();
         }
         
-        private void Start() => 
-            UpdateCounter();
-
         private void UpdateCounter() =>
             counter.text = $"{_worldData.lootData.collected}";
     }

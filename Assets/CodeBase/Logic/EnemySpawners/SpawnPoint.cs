@@ -8,8 +8,8 @@ namespace CodeBase.Logic.EnemySpawners
 {
     public class SpawnPoint : MonoBehaviour, ISavedProgress
     {
-        public MonsterTypeId monsterTypeId { get; set; }
-        public string id { get; set; }
+        public MonsterTypeId MonsterTypeId { get; set; }
+        public string ID { get; set; }
 
         private IGameFactory _factory;
         private EnemyDeath _enemyDeath;
@@ -22,7 +22,7 @@ namespace CodeBase.Logic.EnemySpawners
         
         public void LoadProgress(PlayerProgress progress)
         {
-            if (progress.killData.clearedSpawners.Contains(id))
+            if (progress.killData.clearedSpawners.Contains(ID))
                 _slain = true;
             else
                 Spawn();
@@ -31,12 +31,12 @@ namespace CodeBase.Logic.EnemySpawners
         public void UpdateProgress(PlayerProgress progress)
         {
             if (_slain) 
-                progress.killData.clearedSpawners.Add(id);
+                progress.killData.clearedSpawners.Add(ID);
         }
 
-        private void Spawn()
+        private async void Spawn()
         {
-            GameObject monster = _factory.CreateMonster(monsterTypeId, transform);
+            GameObject monster = await _factory.CreateMonster(MonsterTypeId, transform);
             _enemyDeath = monster.GetComponent<EnemyDeath>();
             _enemyDeath.Happened += Slay;
         }

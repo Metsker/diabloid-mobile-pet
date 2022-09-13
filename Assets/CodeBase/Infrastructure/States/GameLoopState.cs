@@ -8,11 +8,12 @@
         {
             _stateMachine = stateMachine;
         }
-        public void Exit()
+
+        public void Enter()
         {
         }
 
-        public void Enter()
+        public void Exit()
         {
         }
     }

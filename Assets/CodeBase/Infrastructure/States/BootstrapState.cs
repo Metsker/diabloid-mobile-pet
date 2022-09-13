@@ -41,9 +41,9 @@ namespace CodeBase.Infrastructure.States
         {
             _services.RegisterSingle(InputService());
             _services.RegisterSingle(InitedStaticDataService());
-            
+            _services.RegisterSingle(InitedAssetService());
+
             _services.RegisterSingle<IGameStateMachine>(_stateMachine);
-            _services.RegisterSingle<IAssetProvider>(new AssetProvider());
             _services.RegisterSingle<IPersistentProgressService>(new PersistentProgressService());
             
             _services.RegisterSingle(InitedAdsService());
@@ -72,6 +72,13 @@ namespace CodeBase.Infrastructure.States
             IAdsService adsService = new AdsService();
             adsService.Initialize();
             return adsService;
+        }
+        
+        private static IAssetProvider InitedAssetService()
+        {
+            IAssetProvider assetProvider = new AssetProvider();
+            assetProvider.Instantiate();
+            return assetProvider;
         }
 
         private static IStaticDataService InitedStaticDataService()

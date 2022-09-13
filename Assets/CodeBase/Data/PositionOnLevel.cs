@@ -5,8 +5,6 @@ namespace CodeBase.Data
     [Serializable]
     public class PositionOnLevel
     {
-        private const string InitialLevel = "Graveyard";
-        
         public string level;
         public Vector3Data position;
 
@@ -18,7 +16,7 @@ namespace CodeBase.Data
 
         public PositionOnLevel()
         {
-            level = InitialLevel;
+            level = Constants.InitialLevel;
         }
     }
 }

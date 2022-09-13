@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using CodeBase.Data;
 using CodeBase.Enemy;
 using CodeBase.Infrastructure.Services;
@@ -11,16 +12,17 @@ namespace CodeBase.Infrastructure.Factory
 {
     public interface IGameFactory : IService
     {
-        List<ISavedProgress> progressWriters { get; }
-        List<ISavedProgressReader> progressReaders { get; }
+        List<ISavedProgress> ProgressWriters { get; }
+        List<ISavedProgressReader> ProgressReaders { get; }
         
-        GameObject CreateHero(Vector3 at);
-        GameObject CreateHud();
-        GameObject CreateMonster(MonsterTypeId monsterTypeId, Transform parent);
-        LootPiece CreateLoot();
-        void CreateSpawner(Vector3 at, string spawnerId, MonsterTypeId monsterTypeId);
-        void CreateLevelTransfer(Vector3 at, Vector3 colliderSize, string to);
+        Task<GameObject> CreateHero(Vector3 at);
+        Task<GameObject> CreateHud();
+        Task<GameObject> CreateMonster(MonsterTypeId monsterTypeId, Transform parent);
+        Task<LootPiece> CreateLoot();
+        Task CreateSpawner(Vector3 at, string spawnerId, MonsterTypeId monsterTypeId);
+        Task CreateLevelTransfer(Vector3 at, Vector3 colliderSize, string to);
 
+        Task WarmUp();
         void Cleanup();
     }
 }

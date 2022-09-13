@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
+using CodeBase.Logic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace CodeBase.StaticData
 {
@@ -10,6 +10,8 @@ namespace CodeBase.StaticData
         public string levelKey;
 
         public List<EnemySpawnerData> enemySpawners;
+        public List<LevelTransferTriggerData> transferTriggers;
 
+        public Vector3 initialHeroPosition;
     }
 }

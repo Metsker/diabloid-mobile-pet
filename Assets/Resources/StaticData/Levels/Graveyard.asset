@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3421f9d2cf594e538b2033005c0fc236, type: 3}
   m_Name: Graveyard
   m_EditorClassIdentifier: 
-  levelKey: Main
+  levelKey: Graveyard
   enemySpawners:
   - id: ed989dd1-ed81-466d-98a4-3e73364831ec
     monsterTypeId: 10
@@ -32,3 +32,8 @@ MonoBehaviour:
   - id: 70de5b42-140e-41b5-8b5a-ac9518dd8a10
     monsterTypeId: 0
     position: {x: -6.2300034, y: 0, z: -6.21}
+  transferTriggers:
+  - position: {x: 0.67, y: 0.894, z: 12.657}
+    colliderSize: {x: 1.4, y: 1.4, z: 1.5}
+    transferTo: Dungeon
+  initialHeroPosition: {x: 7.95, y: 0, z: 8.7}

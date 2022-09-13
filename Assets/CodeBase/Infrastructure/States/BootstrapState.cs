@@ -15,6 +15,7 @@ namespace CodeBase.Infrastructure.States
     public class BootstrapState : IState
     {
         private const string InitialScene = "Initial";
+        
         private readonly GameStateMachine _stateMachine;
         private readonly SceneLoader _sceneLoader;
         private readonly AllServices _services;
@@ -40,7 +41,8 @@ namespace CodeBase.Infrastructure.States
         {
             _services.RegisterSingle(InputService());
             _services.RegisterSingle(InitedStaticDataService());
-
+            
+            _services.RegisterSingle<IGameStateMachine>(_stateMachine);
             _services.RegisterSingle<IAssetProvider>(new AssetProvider());
             _services.RegisterSingle<IPersistentProgressService>(new PersistentProgressService());
             
@@ -57,7 +59,8 @@ namespace CodeBase.Infrastructure.States
                 _services.Single<IAssetProvider>(),
                 _services.Single<IStaticDataService>(),
                 _services.Single<IPersistentProgressService>(),
-                _services.Single<IWindowService>()));
+                _services.Single<IWindowService>(),
+                _services.Single<IGameStateMachine>()));
 
             _services.RegisterSingle<ISaveLoadService>(new SaveLoadService(
                 _services.Single<IPersistentProgressService>(),

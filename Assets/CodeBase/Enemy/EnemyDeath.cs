@@ -12,7 +12,7 @@ namespace CodeBase.Enemy
         private EnemyHealth health;
         
         [SerializeField]
-        private EnemyMoveToHero moveToHero;
+        private EnemyHeroChaser enemyHeroChaser;
         
         [SerializeField]
         private EnemyAnimator animator;
@@ -50,7 +50,7 @@ namespace CodeBase.Enemy
         }
 
         private void DisableMovement() =>
-            moveToHero.enabled = false;
+            enemyHeroChaser.enabled = false;
 
         private void SpawnDeathFx() =>
             Instantiate(deathFx, transform.position, Quaternion.identity);

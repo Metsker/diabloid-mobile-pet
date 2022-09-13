@@ -173,7 +173,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 063b68d07ab146c69037fd3bc620058e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attack: {fileID: -8718654850832801858}
+  enemyAttack: {fileID: -8718654850832801858}
   triggerObserver: {fileID: 3222140017232691602}
 --- !u!114 &4774059602595895201
 MonoBehaviour:
@@ -203,7 +203,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: {fileID: 4774059602595895201}
-  moveToHero: {fileID: -481493245065862370}
+  enemyHeroChaser: {fileID: -481493245065862370}
   animator: {fileID: -5934976414635461978}
   deathFx: {fileID: 100008, guid: e3d819d8722fa1f47a3f68574b56dfb3, type: 3}
 --- !u!114 &4776840600301681775

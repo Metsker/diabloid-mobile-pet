@@ -6,6 +6,7 @@
         public const string Hud = "Hud/Hud";
         public const string Loot = "Loot/Loot";
         public const string Spawner = "Enemies/Spawn Point";
+        public const string LevelTransfer = "LevelTransfers/LevelTransferTrigger";
         public const string UIRoot = "UI/UIRoot";
     }
 }

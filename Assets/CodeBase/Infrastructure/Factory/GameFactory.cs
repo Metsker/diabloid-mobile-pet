@@ -5,6 +5,7 @@ using CodeBase.Enemy;
 using CodeBase.Hero;
 using CodeBase.Infrastructure.AssetManagement;
 using CodeBase.Infrastructure.Services.PersistentProgress;
+using CodeBase.Infrastructure.States;
 using CodeBase.Logic;
 using CodeBase.Logic.EnemySpawners;
 using CodeBase.StaticData;
@@ -23,6 +24,7 @@ namespace CodeBase.Infrastructure.Factory
         private readonly IStaticDataService _staticData;
         private readonly IPersistentProgressService _progressService;
         private readonly IWindowService _windowService;
+        private readonly IGameStateMachine _gameStateMachine;
         
         private GameObject _heroGameObject;
         public List<ISavedProgressReader> progressReaders { get; } = new();
@@ -32,12 +34,14 @@ namespace CodeBase.Infrastructure.Factory
             IAssetProvider assetProvider,
             IStaticDataService staticData,
             IPersistentProgressService progressService,
-            IWindowService windowService)
+            IWindowService windowService,
+            IGameStateMachine gameStateMachine)
         {
             _assetProvider = assetProvider;
             _staticData = staticData;
             _progressService = progressService;
             _windowService = windowService;
+            _gameStateMachine = gameStateMachine;
         }
 
         public GameObject CreateHero(Vector3 at)
@@ -82,7 +86,7 @@ namespace CodeBase.Infrastructure.Factory
             monster.GetComponent<Follow>().Construct(_heroGameObject.transform);
             monster.GetComponent<NavMeshAgent>().speed = monsterData.moveSpeed;
 
-            var attack = monster.GetComponent<Attack>();
+            var attack = monster.GetComponent<EnemyAttack>();
             attack.Construct(_heroGameObject.transform);
             attack.damage = monsterData.damage;
             attack.cleavage = monsterData.cleavage;
@@ -103,6 +107,16 @@ namespace CodeBase.Infrastructure.Factory
             spawner.Construct(this);
             spawner.id = spawnerId;
             spawner.monsterTypeId = monsterTypeId;
+        }
+
+        public void CreateLevelTransfer(Vector3 at, Vector3 colliderSize, string to)
+        {
+            LevelTransferTrigger transfer = InstantiateRegistered(AssetPath.LevelTransfer, at)
+                .GetComponent<LevelTransferTrigger>();
+            
+            transfer.Construct(_gameStateMachine);
+            transfer.GetComponent<BoxCollider>().size = colliderSize;
+            transfer.TransferTo = to;
         }
 
         public void Cleanup()

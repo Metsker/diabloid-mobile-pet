@@ -9,7 +9,7 @@ using CodeBase.UI.Services;
 
 namespace CodeBase.Infrastructure.States
 {
-    public class GameStateMachine
+    public class GameStateMachine : IGameStateMachine
     {
         private readonly Dictionary<Type, IExitableState> _state;
         private IExitableState _activeState;
@@ -23,14 +23,15 @@ namespace CodeBase.Infrastructure.States
                     sceneLoader,
                     services),
                 
-                [typeof(LoadSceneState)] = new LoadSceneState(
+                [typeof(LoadLevelState)] = new LoadLevelState(
                     this,
                     sceneLoader,
                     loadingCurtain,
                     services.Single<IGameFactory>(), 
                     services.Single<IPersistentProgressService>(),
                     services.Single<IStaticDataService>(),
-                    services.Single<IUIFactory>()),
+                    services.Single<IUIFactory>(),
+                    this),
                 
                 [typeof(LoadProgressState)] = new LoadProgressState(
                     this,

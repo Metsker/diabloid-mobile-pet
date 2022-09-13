@@ -26,7 +26,7 @@ namespace CodeBase.Infrastructure.States
             LoadProgress();
             
             var payload = _progressService.progress.worldData.positionOnLevel.level;
-            _gameStateMachine.Enter<LoadSceneState, string>(payload);
+            _gameStateMachine.Enter<LoadLevelState, string>(payload);
         }
 
         public void Exit()

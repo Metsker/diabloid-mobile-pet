@@ -1,6 +1,5 @@
 ﻿using System;
 using System.ComponentModel;
-using CodeBase.Infrastructure.Services.PersistentProgress;
 using Unity.Services.Core;
 using Unity.Services.Mediation;
 using UnityEngine;
@@ -78,10 +77,7 @@ namespace Unity.Example
             {
                 await _ad.LoadAsync();
             }
-            catch (LoadFailedException)
-            {
-                // We will handle the failure in the OnFailedLoad callback
-            }
+            catch (LoadFailedException) { }
         }
 
         private void InitializationFailed(Exception e)
@@ -132,7 +128,6 @@ namespace Unity.Example
                 case RuntimePlatform.IPhonePlayer:
                     return IOSGameId;
                 case RuntimePlatform.WindowsEditor:
-                    throw new InvalidEnumArgumentException(nameof(Application.platform));
                     return AndroidGameId;
                 default:
                     throw new InvalidEnumArgumentException(nameof(Application.platform));

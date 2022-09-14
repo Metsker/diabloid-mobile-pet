@@ -20,8 +20,4 @@ MonoBehaviour:
   cleavage: 0.5
   minLoot: 1
   maxLoot: 7
-  prefabReference:
-    m_AssetGUID: 069a719a4fbedf24e9db76ec3a16926e
-    m_SubObjectName: 
-    m_SubObjectType: 
-    m_EditorAssetChanged: 0
+  prefab: {fileID: 6461205935528241240, guid: 069a719a4fbedf24e9db76ec3a16926e, type: 3}

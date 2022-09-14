@@ -7,7 +7,8 @@ namespace CodeBase.Enemy
 {
     public class LootSpawner : MonoBehaviour
     {
-        [SerializeField] private EnemyDeath enemyDeath;
+        [SerializeField] 
+        private EnemyDeath enemyDeath;
         
         private IGameFactory _factory;
         private int _lootMax;
@@ -21,9 +22,9 @@ namespace CodeBase.Enemy
         private void Start() =>
             enemyDeath.Happened += SpawnLoot;
 
-        private async void SpawnLoot()
+        private void SpawnLoot()
         {
-            LootPiece loot = await _factory.CreateLoot();
+            LootPiece loot = _factory.CreateLoot();
             loot.transform.position = gameObject.transform.position;
 
             Loot lootItem = GenerateLoot();

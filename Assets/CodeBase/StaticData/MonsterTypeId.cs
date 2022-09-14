@@ -4,6 +4,5 @@
     {
         Lich = 0,
         Golem = 10,
-        Dragon = 12,
     }
 }
